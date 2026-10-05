@@ -1,0 +1,263 @@
+/* Dark green + beige palette.
+   The email itself is white with Gmail-style colours so it feels real. */
+:root {
+  --beige: #e9e4d8;
+  --beige-light: #f4f1e9;
+  --green: #1f3b2d;
+  --green-hover: #2e5642;
+  --muted: #4b5e52;
+  --line: rgba(31, 59, 45, 0.28);
+  --bad: #9b4a3c;
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-script: "Pinyon Script", cursive;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem 3rem;
+  background: var(--beige);
+  color: var(--green);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADING ---------- */
+.title {
+  margin: 0 0 1rem;
+  font: 400 clamp(3rem, 13vw, 4.75rem) / 0.9 var(--font-display);
+  text-transform: uppercase;
+  text-align: center;
+}
+.title .script {
+  display: block;
+  margin-top: -0.3em;
+  padding-right: 0.5rem;
+  text-align: right;
+  font: 0.7em/1 var(--font-script);
+  text-transform: none;
+}
+.intro {
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- THE EMAIL ---------- */
+.mail {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  color: #202124;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(31, 59, 45, 0.14);
+}
+.mail__bar {
+  padding: 0.6rem 1.25rem;
+  background: #f6f8fc;
+  border-bottom: 1px solid #e8eaed;
+  color: #5f6368;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.mail__subject {
+  margin: 0;
+  padding: 1rem 1.25rem 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.mail__head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.75rem 1.25rem;
+}
+.mail__from {
+  flex: 1;
+  min-width: 0;
+}
+.mail__from p {
+  margin: 0;
+  word-break: break-word;
+}
+.muted {
+  color: #5f6368;
+  font-size: 0.82rem;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 500;
+}
+
+.mail__body {
+  min-height: 12rem;
+  padding: 0.25rem 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.mail__body p {
+  margin: 0.75rem 0;
+}
+.mail__body a {
+  color: #1a73e8;
+}
+.mail__body a.cta {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  background: #1a73e8;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+.mail__body .sig {
+  color: #5f6368;
+  font-size: 0.85rem;
+}
+
+.attachments {
+  padding: 0 1.25rem 1.5rem;
+}
+.attachments:empty {
+  display: none;
+}
+.chip {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+/* Bottom-left bubble showing where a link really goes */
+.linkbar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 100%;
+  padding: 0.25rem 0.7rem;
+  background: #f1f3f4;
+  border: 1px solid #dadce0;
+  border-left: 0;
+  border-bottom: 0;
+  border-top-right-radius: 6px;
+  color: #3c4043;
+  font-size: 0.78rem;
+  word-break: break-all;
+}
+
+/* ---------- FEEDBACK + BUTTONS ---------- */
+.feedback {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--beige-light);
+  border-left: 4px solid var(--green);
+  border-radius: 12px;
+  font-size: 0.92rem;
+}
+.feedback.is-wrong {
+  border-left-color: var(--bad);
+}
+.feedback code {
+  padding: 0 0.3em;
+  background: rgba(31, 59, 45, 0.08);
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.btn {
+  flex: 1;
+  min-width: 9rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  font: 500 1rem var(--font-body);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn--phish {
+  background: transparent;
+  color: var(--bad);
+  border-color: var(--bad);
+}
+.btn--phish:hover:not(:disabled) {
+  background: var(--bad);
+  color: #fff;
+}
+.btn--safe,
+.btn--next {
+  background: var(--green);
+  color: var(--beige);
+}
+.btn--safe:hover:not(:disabled),
+.btn--next:hover {
+  background: var(--green-hover);
+}
+.btn--next {
+  flex-basis: 100%;
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- END SCREEN ---------- */
+.end {
+  margin-top: 1.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.end__score {
+  margin: 0;
+  font: 400 4rem/1 var(--font-display);
+}
+.end .btn {
+  max-width: 14rem;
+  margin-top: 0.5rem;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
